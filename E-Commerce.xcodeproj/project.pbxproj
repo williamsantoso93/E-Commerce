@@ -17,6 +17,7 @@
 		7A90AB392686AA1900625861 /* E_CommerceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A90AB382686AA1900625861 /* E_CommerceTests.swift */; };
 		7A90AB442686AA1900625861 /* E_CommerceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A90AB432686AA1900625861 /* E_CommerceUITests.swift */; };
 		7ABBFA7D2686ABDB009E43E4 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7ABBFA7C2686ABDB009E43E4 /* .gitignore */; };
+		7ABBFA7F2686AC24009E43E4 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7ABBFA7E2686AC23009E43E4 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		7A90AB432686AA1900625861 /* E_CommerceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E_CommerceUITests.swift; sourceTree = "<group>"; };
 		7A90AB452686AA1900625861 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7ABBFA7C2686ABDB009E43E4 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		7ABBFA7E2686AC23009E43E4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 		7A90AB122686AA1800625861 = {
 			isa = PBXGroup;
 			children = (
+				7ABBFA7E2686AC23009E43E4 /* README.md */,
 				7ABBFA7C2686ABDB009E43E4 /* .gitignore */,
 				7A90AB1D2686AA1800625861 /* E-Commerce */,
 				7A90AB372686AA1900625861 /* E-CommerceTests */,
@@ -239,6 +242,7 @@
 			files = (
 				7ABBFA7D2686ABDB009E43E4 /* .gitignore in Resources */,
 				7A90AB2E2686AA1900625861 /* LaunchScreen.storyboard in Resources */,
+				7ABBFA7F2686AC24009E43E4 /* README.md in Resources */,
 				7A90AB2B2686AA1900625861 /* Assets.xcassets in Resources */,
 				7A90AB262686AA1800625861 /* Main.storyboard in Resources */,
 			);
