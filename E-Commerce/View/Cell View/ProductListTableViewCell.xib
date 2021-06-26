@@ -26,12 +26,11 @@
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="150"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pNM-5J-Ueo">
-                                        <rect key="frame" x="10" y="116.5" width="25" height="22.5"/>
+                                        <rect key="frame" x="10" y="115" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="aEA-3E-jcu"/>
                                             <constraint firstAttribute="height" constant="25" id="zRw-Xf-T2t"/>
                                         </constraints>
-                                        <state key="normal" backgroundImage="heart" catalog="system"/>
                                         <connections>
                                             <action selector="favoriteAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="LtQ-A3-eo2"/>
                                         </connections>
@@ -77,7 +76,4 @@
             <point key="canvasLocation" x="121.73913043478262" y="130.58035714285714"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="heart" catalog="system" width="128" height="109"/>
-    </resources>
 </document>

@@ -15,6 +15,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     
+    var selectedProduct: Product?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,17 +26,6 @@ class HomeViewController: UIViewController {
         
         fetchData()
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     func fetchData() {
         Networking.shared.getData(from: "https://private-4639ce-ecommerce56.apiary-mock.com/home") { (result: Result<Commerce,NetworkError>) in
@@ -51,6 +42,12 @@ class HomeViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "HomeToDetailSegue" {
+            let controller = segue.destination as! DetailProductViewController
+            controller.product = selectedProduct
+        }
+    }
 }
 
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -73,16 +70,16 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate, ProductListTableViewCellDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return commerce?.data.productPromo.count ?? 0
+        return commerce?.data.product.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductListTableViewCell", for: indexPath) as! ProductListTableViewCell
         
-        cell.productImageView.sd_setImage(with: URL(string: commerce?.data.productPromo[indexPath.row].imageURL ?? ""))
-        cell.titleLabel.text = commerce?.data.productPromo[indexPath.row].title ?? ""
-        let loved = commerce?.data.productPromo[indexPath.row].loved == 1 ? "heart.fill" : "heart"
+        cell.productImageView.sd_setImage(with: URL(string: commerce?.data.product[indexPath.row].imageURL ?? ""))
+        cell.titleLabel.text = commerce?.data.product[indexPath.row].title ?? ""
+        let loved = commerce?.data.product[indexPath.row].loved == 1 ? "heart.fill" : "heart"
         cell.favoriteButton.setImage(UIImage(systemName: loved), for: .normal)
         cell.index = indexPath.row
         cell.delegate = self
@@ -91,21 +88,24 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate, Produc
     }
     
     func favoriteAction(at index: Int) {
-        if let loved = commerce?.data.productPromo[index].loved {
+        if let loved = commerce?.data.product[index].loved {
             if loved == 1 {
-                commerce?.data.productPromo[index].loved = 0
+                commerce?.data.product[index].loved = 0
             } else {
-                commerce?.data.productPromo[index].loved = 1
+                commerce?.data.product[index].loved = 1
             }
             tableView.reloadData()
         }
     }
     func productTapped(at index: Int) {
-        print(index)
+        guard let product = commerce?.data.product[index] else { return }
+        selectedProduct = product
+        
+        performSegue(withIdentifier: "HomeToDetailSegue", sender: nil)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        print(indexPath.row)
+        performSegue(withIdentifier: "HomeToDetailSegue", sender: nil)
     }
 }

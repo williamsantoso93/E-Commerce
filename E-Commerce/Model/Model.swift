@@ -12,10 +12,15 @@ struct Commerce: Codable {
     var data: CommerceData
 }
 
-// MARK: - DataClass
+// MARK: - CommerceData
 struct CommerceData: Codable {
     var category: [Category]
-    var productPromo: [ProductPromo]
+    var product: [Product]
+    
+    enum CodingKeys: String, CodingKey {
+        case category
+        case product = "productPromo"
+    }
 }
 
 // MARK: - Category
@@ -31,7 +36,7 @@ struct Category: Codable {
 }
 
 // MARK: - ProductPromo
-struct ProductPromo: Codable {
+struct Product: Codable {
     var id: String
     var imageURL: String
     var title, productPromoDescription, price: String

@@ -28,6 +28,9 @@
 		7ACF9BDC26875E740039C4DD /* ProductListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACF9BDA26875E740039C4DD /* ProductListTableViewCell.swift */; };
 		7ACF9BDD26875E740039C4DD /* ProductListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ACF9BDB26875E740039C4DD /* ProductListTableViewCell.xib */; };
 		7ACF9BE426876AEF0039C4DD /* DetailProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACF9BE326876AEF0039C4DD /* DetailProductViewController.swift */; };
+		7ACF9BE72687740B0039C4DD /* ListCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACF9BE52687740B0039C4DD /* ListCardTableViewCell.swift */; };
+		7ACF9BE82687740B0039C4DD /* ListCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ACF9BE62687740B0039C4DD /* ListCardTableViewCell.xib */; };
+		7ACF9BEA2687749B0039C4DD /* PurchaseHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACF9BE92687749B0039C4DD /* PurchaseHistoryViewController.swift */; };
 		8C87C3BCD8327A97F8BBD561 /* Pods_E_Commerce.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85093D79419F991D06ECB496 /* Pods_E_Commerce.framework */; };
 		BCB219184E1651F32D898E7A /* Pods_E_CommerceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77A6B53BB7061627BEE5D7EF /* Pods_E_CommerceTests.framework */; };
 /* End PBXBuildFile section */
@@ -81,6 +84,9 @@
 		7ACF9BDA26875E740039C4DD /* ProductListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListTableViewCell.swift; sourceTree = "<group>"; };
 		7ACF9BDB26875E740039C4DD /* ProductListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductListTableViewCell.xib; sourceTree = "<group>"; };
 		7ACF9BE326876AEF0039C4DD /* DetailProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductViewController.swift; sourceTree = "<group>"; };
+		7ACF9BE52687740B0039C4DD /* ListCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCardTableViewCell.swift; sourceTree = "<group>"; };
+		7ACF9BE62687740B0039C4DD /* ListCardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCardTableViewCell.xib; sourceTree = "<group>"; };
+		7ACF9BE92687749B0039C4DD /* PurchaseHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHistoryViewController.swift; sourceTree = "<group>"; };
 		7F21680A36D208B0CC00AB93 /* Pods-E-Commerce-E-CommerceUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-E-Commerce-E-CommerceUITests.release.xcconfig"; path = "Target Support Files/Pods-E-Commerce-E-CommerceUITests/Pods-E-Commerce-E-CommerceUITests.release.xcconfig"; sourceTree = "<group>"; };
 		826DD24F4718A6FA6C17095C /* Pods-E-Commerce.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-E-Commerce.debug.xcconfig"; path = "Target Support Files/Pods-E-Commerce/Pods-E-Commerce.debug.xcconfig"; sourceTree = "<group>"; };
 		85093D79419F991D06ECB496 /* Pods_E_Commerce.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_E_Commerce.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,6 +199,8 @@
 				7ACF9BDB26875E740039C4DD /* ProductListTableViewCell.xib */,
 				7ACF9BD4268758700039C4DD /* CategoryCollectionViewCell.swift */,
 				7ACF9BD5268758700039C4DD /* CategoryCollectionViewCell.xib */,
+				7ACF9BE52687740B0039C4DD /* ListCardTableViewCell.swift */,
+				7ACF9BE62687740B0039C4DD /* ListCardTableViewCell.xib */,
 			);
 			path = "Cell View";
 			sourceTree = "<group>";
@@ -203,6 +211,7 @@
 				7A90AB222686AA1800625861 /* LoginViewController.swift */,
 				7ACF9BD02687488A0039C4DD /* HomeViewController.swift */,
 				7ACF9BE326876AEF0039C4DD /* DetailProductViewController.swift */,
+				7ACF9BE92687749B0039C4DD /* PurchaseHistoryViewController.swift */,
 			);
 			path = "Controller View";
 			sourceTree = "<group>";
@@ -363,6 +372,7 @@
 				7ABBFA7F2686AC24009E43E4 /* README.md in Resources */,
 				7ACF9BDD26875E740039C4DD /* ProductListTableViewCell.xib in Resources */,
 				7A90AB2B2686AA1900625861 /* Assets.xcassets in Resources */,
+				7ACF9BE82687740B0039C4DD /* ListCardTableViewCell.xib in Resources */,
 				7A90AB262686AA1800625861 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -531,9 +541,11 @@
 				7ACF9BD926875B630039C4DD /* Networking.swift in Sources */,
 				7A90AB292686AA1800625861 /* E_Commerce.xcdatamodeld in Sources */,
 				7A90AB212686AA1800625861 /* SceneDelegate.swift in Sources */,
+				7ACF9BE72687740B0039C4DD /* ListCardTableViewCell.swift in Sources */,
 				7ACF9BD6268758700039C4DD /* CategoryCollectionViewCell.swift in Sources */,
 				7ACF9BD12687488A0039C4DD /* HomeViewController.swift in Sources */,
 				7ACF9BDC26875E740039C4DD /* ProductListTableViewCell.swift in Sources */,
+				7ACF9BEA2687749B0039C4DD /* PurchaseHistoryViewController.swift in Sources */,
 				7ACF9BE426876AEF0039C4DD /* DetailProductViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
