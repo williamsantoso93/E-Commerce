@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OR8-L2-4Tk">
-                        <rect key="frame" x="20" y="0.0" width="280" height="192"/>
+                        <rect key="frame" x="20" y="0.0" width="280" height="182"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KQq-Ml-spB">
                                 <rect key="frame" x="0.0" y="0.0" width="280" height="150"/>
@@ -49,7 +49,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2PD-do-Y76">
-                                <rect key="frame" x="0.0" y="158" width="280" height="34"/>
+                                <rect key="frame" x="0.0" y="158" width="280" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -61,13 +61,14 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="OR8-L2-4Tk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="REH-4R-3Oo"/>
-                    <constraint firstAttribute="bottom" secondItem="OR8-L2-4Tk" secondAttribute="bottom" constant="10" id="b2p-NC-hnd"/>
+                    <constraint firstAttribute="bottom" secondItem="OR8-L2-4Tk" secondAttribute="bottom" constant="20" id="b2p-NC-hnd"/>
                     <constraint firstItem="OR8-L2-4Tk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="bCD-V7-IDz"/>
                     <constraint firstAttribute="trailing" secondItem="OR8-L2-4Tk" secondAttribute="trailing" constant="20" id="cxc-mD-VLu"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <gestureRecognizers/>
             <connections>
                 <outlet property="favoriteButton" destination="pNM-5J-Ueo" id="fP8-M7-smH"/>
                 <outlet property="productImageView" destination="ocM-JE-6MB" id="N2e-xK-trm"/>

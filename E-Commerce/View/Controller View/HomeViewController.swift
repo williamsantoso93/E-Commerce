@@ -43,6 +43,7 @@ class HomeViewController: UIViewController {
                 case .success(let data) :
                     self.commerce = data
                     self.collectionView.reloadData()
+                    self.tableView.reloadData()
                 case .failure(let error) :
                     print(error.localizedDescription)
                 }
@@ -70,7 +71,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
 }
 
-extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
+extension HomeViewController: UITableViewDataSource, UITableViewDelegate, ProductListTableViewCellDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return commerce?.data.productPromo.count ?? 0
     }
@@ -83,9 +84,28 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         cell.titleLabel.text = commerce?.data.productPromo[indexPath.row].title ?? ""
         let loved = commerce?.data.productPromo[indexPath.row].loved == 1 ? "heart.fill" : "heart"
         cell.favoriteButton.setImage(UIImage(systemName: loved), for: .normal)
+        cell.index = indexPath.row
+        cell.delegate = self
         
         return cell
     }
     
+    func favoriteAction(at index: Int) {
+        if let loved = commerce?.data.productPromo[index].loved {
+            if loved == 1 {
+                commerce?.data.productPromo[index].loved = 0
+            } else {
+                commerce?.data.productPromo[index].loved = 1
+            }
+            tableView.reloadData()
+        }
+    }
+    func productTapped(at index: Int) {
+        print(index)
+    }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        print(indexPath.row)
+    }
 }

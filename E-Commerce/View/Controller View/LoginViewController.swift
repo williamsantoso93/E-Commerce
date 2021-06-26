@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  LoginViewController.swift
 //  E-Commerce
 //
 //  Created by William Santoso on 26/06/21.
@@ -11,7 +11,7 @@ import GoogleSignIn
 import FBSDKLoginKit
 
 
-class ViewController: UIViewController, LoginButtonDelegate {
+class LoginViewController: UIViewController, LoginButtonDelegate {
     
     @IBOutlet weak var gSignInButton: GIDSignInButton!
     @IBOutlet weak var loginWithFacebookView: UIView!

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xW6-9s-Ojn">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -8,12 +7,12 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="E_Commerce" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="E_Commerce" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DYy-4v-8aV">
@@ -164,7 +163,7 @@
             <objects>
                 <viewController id="3HN-3r-qax" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JWC-Zm-Y52">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="jH2-Dd-k4y"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -180,7 +179,7 @@
             <objects>
                 <viewController id="nGh-gX-1bS" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bYn-Z4-4kM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="d1h-zY-tBe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -196,7 +195,7 @@
             <objects>
                 <viewController id="2nj-1R-wh7" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8tS-p6-nhK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="vgO-DN-xu8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -212,7 +211,7 @@
             <objects>
                 <viewController modalPresentationStyle="overFullScreen" id="tsD-YY-NsC" customClass="HomeViewController" customModule="E_Commerce" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qmu-eg-jXl">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ceH-fm-N9d">
@@ -233,10 +232,9 @@
                                     <outlet property="delegate" destination="tsD-YY-NsC" id="BuF-k1-OZF"/>
                                 </connections>
                             </collectionView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZcQ-k2-uVe">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZcQ-k2-uVe">
                                 <rect key="frame" x="0.0" y="278" width="414" height="535"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <inset key="scrollIndicatorInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ZS7-mv-nez">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="44"/>
@@ -269,11 +267,28 @@
                     <connections>
                         <outlet property="collectionView" destination="ceH-fm-N9d" id="vdL-vf-1Lr"/>
                         <outlet property="tableView" destination="ZcQ-k2-uVe" id="vrX-9N-IXZ"/>
+                        <segue destination="MA9-Sd-uIj" kind="show" id="fyF-1k-tmU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zMp-MP-adL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4731.884057971015" y="-984.375"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="vH4-kV-Tcm">
+            <objects>
+                <viewController id="MA9-Sd-uIj" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="B2O-u8-b5Q">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Bvg-d5-wOc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="58n-Y0-44Q"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NpY-0a-aUN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6220" y="-267"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Nsd-0c-TWg">
