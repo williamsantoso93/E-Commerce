@@ -183,9 +183,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N45-vB-JIn">
-                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N45-vB-JIn">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="nGh-gX-1bS" id="l53-r3-J42"/>
+                                    <outlet property="delegate" destination="nGh-gX-1bS" id="EDp-eH-mUG"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="d1h-zY-tBe"/>
@@ -200,6 +204,7 @@
                     <navigationItem key="navigationItem" title="Purchase History" largeTitleDisplayMode="always" id="W8u-rS-GJw"/>
                     <connections>
                         <outlet property="tableView" destination="N45-vB-JIn" id="TGY-i6-pbQ"/>
+                        <segue destination="MA9-Sd-uIj" kind="show" identifier="HistoryToDetailSegue" id="2wl-VH-oKm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Ck-o5-m8U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -374,7 +379,7 @@
                             <constraint firstItem="45w-Jb-RL9" firstAttribute="leading" secondItem="Bvg-d5-wOc" secondAttribute="leading" constant="20" id="wdr-3O-Nmv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="58n-Y0-44Q">
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="58n-Y0-44Q">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="action" id="8zc-az-GMj">
                             <connections>
                                 <action selector="shareAction:" destination="MA9-Sd-uIj" id="Shs-Dk-5me"/>
@@ -405,9 +410,9 @@
                     </tabBar>
                     <connections>
                         <segue destination="p1d-KY-QXC" kind="relationship" relationship="viewControllers" id="uvk-yu-iZb"/>
-                        <segue destination="LEc-p1-W92" kind="relationship" relationship="viewControllers" id="QqB-Oo-jGs"/>
-                        <segue destination="3HN-3r-qax" kind="relationship" relationship="viewControllers" id="jwE-pk-ioY"/>
                         <segue destination="2nj-1R-wh7" kind="relationship" relationship="viewControllers" id="pml-yY-3iT"/>
+                        <segue destination="3HN-3r-qax" kind="relationship" relationship="viewControllers" id="jwE-pk-ioY"/>
+                        <segue destination="LEc-p1-W92" kind="relationship" relationship="viewControllers" id="QqB-Oo-jGs"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YfV-qU-5o0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -454,8 +459,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LEc-p1-W92" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="HvH-kl-HzT"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Jqy-SM-pCv">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jqy-SM-pCv">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -468,6 +473,9 @@
             <point key="canvasLocation" x="3821.739130434783" y="1132.3660714285713"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="2wl-VH-oKm"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="cart.fill" catalog="system" width="128" height="102"/>
         <image name="checkmark" catalog="system" width="128" height="114"/>

@@ -7,11 +7,23 @@
 
 import UIKit
 
-class ListCardTableViewCell: UITableViewCell {
+protocol ListCardTableViewCellDelegate {
+    func productTapped(at index: Int)
+}
 
+class ListCardTableViewCell: UITableViewCell {
+    @IBOutlet weak var listImage: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    var index: Int = 0
+    
+    var delegate: ListCardTableViewCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapped))
+        contentView.addGestureRecognizer(tap)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -20,4 +32,7 @@ class ListCardTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @objc func tapped() {
+        delegate?.productTapped(at: index)
+    }
 }
