@@ -12,8 +12,6 @@ import FBSDKLoginKit
 
 
 class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInDelegate {
-    
-    
     @IBOutlet weak var gSignInButton: GIDSignInButton!
     @IBOutlet weak var loginWithFacebookView: UIView!
     @IBOutlet weak var rememberMeView: UIStackView!
@@ -53,7 +51,6 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInDeleg
         loginWithFacebookView.addSubview(loginButton)
     }
     
-    
     @objc func tapped() {
         check.toggle()
     }
@@ -61,16 +58,13 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInDeleg
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
-     }
-
-    @IBAction func gSignInAction(_ sender: Any) {
-        
     }
     
     func signIn() {
         performSegue(withIdentifier: "HomeSegue", sender: nil)
     }
     
+    //MARK: - FacebookSignIn
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         if error == nil {
             signIn()
@@ -80,12 +74,15 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInDeleg
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
         
     }
+    
+    //MARK: - Google SignIn
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if error == nil {
             self.signIn()
         }
     }
     
+    //MARK: - username sign in
     @IBAction func signInAction(_ sender: Any) {
         signIn()
     }

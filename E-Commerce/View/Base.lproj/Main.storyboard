@@ -54,10 +54,10 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="186.5" height="44"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S91-FN-Nxf">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="57.5" height="44"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="56" height="44"/>
                                                                         <subviews>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K6c-SS-Gj3">
-                                                                                <rect key="frame" x="13.5" y="7" width="30" height="30"/>
+                                                                                <rect key="frame" x="13" y="7" width="30" height="30"/>
                                                                                 <subviews>
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LJ3-0C-dd1">
                                                                                         <rect key="frame" x="5" y="5" width="20" height="20"/>
@@ -84,7 +84,7 @@
                                                                         </constraints>
                                                                     </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5f-n7-xve">
-                                                                        <rect key="frame" x="77.5" y="0.0" width="109" height="44"/>
+                                                                        <rect key="frame" x="76" y="0.0" width="110.5" height="44"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -127,9 +127,6 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="fJb-jJ-U5j"/>
                                                         </constraints>
-                                                        <connections>
-                                                            <action selector="gSignInAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="73k-2M-IrE"/>
-                                                        </connections>
                                                     </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -11,9 +11,6 @@ class PurchaseHistoryViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var commerce: Commerce?
-    var selectedProduct: Product?
-    
     var viewModel = PurchaseHistoryViewModel()
     
     override func viewDidLoad() {
@@ -55,7 +52,7 @@ class PurchaseHistoryViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "HistoryToDetailSegue" {
             let controller = segue.destination as! DetailProductViewController
-            controller.product = selectedProduct
+            controller.product = viewModel.selectedProduct
         }
     }
 }
@@ -76,7 +73,7 @@ extension PurchaseHistoryViewController: UITableViewDataSource, UITableViewDeleg
     }
     
     func productTapped(at index: Int) {
-        selectedProduct = viewModel.products[index]
+        viewModel.selectedProduct = viewModel.products[index]
         
         performSegue(withIdentifier: "HistoryToDetailSegue", sender: nil)
     }

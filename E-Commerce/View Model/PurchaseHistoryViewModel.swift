@@ -12,6 +12,7 @@ class PurchaseHistoryViewModel {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var productsHistory: [ProductsHistory]?
     var products: [Product] = []
+    var selectedProduct: Product?
     
     func fetchData(completion: @escaping (Bool) -> Void) {
         let request: NSFetchRequest = ProductsHistory.fetchRequest()
