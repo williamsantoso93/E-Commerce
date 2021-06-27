@@ -39,7 +39,7 @@ class DetailProductViewController: UIViewController {
     }
     
     @IBAction func favoriteAction(_ sender: Any) {
-        guard let product = product else { return }
+        guard let product = viewModel.product else { return }
         if product.loved == 1 {
             viewModel.product?.loved = 0
         } else {
