@@ -14,8 +14,24 @@ class PurchaseHistoryViewModel {
     var products: [Product] = []
     
     func fetchData(completion: @escaping (Bool) -> Void) {
-        loadData()
-        completion(true)
+        let request: NSFetchRequest = ProductsHistory.fetchRequest()
+        
+        do {
+            productsHistory = try context.fetch(request)
+            products.removeAll()
+                    
+            for loadProductsHistory in productsHistory! {
+                guard let decoded = try? JSONDecoder().decode(Product.self, from: (loadProductsHistory.product?.data(using: .utf8))!) else {
+                    print("error Decoding")
+                    return
+                }
+                products.append(decoded)
+            }
+            completion(true)
+        } catch {
+            print("error : ", error.localizedDescription)
+            completion(false)
+        }
     }
     
     func deleteAll(completion: @escaping (Bool) -> Void) {
@@ -35,25 +51,10 @@ class PurchaseHistoryViewModel {
         }
         catch {
             print(error.localizedDescription)
+            completion(false)
         }
     }
     
     func loadData() {
-        let request: NSFetchRequest = ProductsHistory.fetchRequest()
-        
-        do {
-            productsHistory = try context.fetch(request)
-            products.removeAll()
-                    
-            for loadProductsHistory in productsHistory! {
-                guard let decoded = try? JSONDecoder().decode(Product.self, from: (loadProductsHistory.product?.data(using: .utf8))!) else {
-                    print("error Decoding")
-                    return
-                }
-                products.append(decoded)
-            }
-        } catch {
-            print("error parah : ", error)
-        }
     }
 }

@@ -22,8 +22,13 @@ class DetailProductViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
         viewModel.product = product
-        guard let product = product else { return }
+        setupView()
+    }
+    
+    func setupView() {
+        guard let product = viewModel.product else { return }
         productImage.sd_setImage(with: URL(string: product.imageURL))
         titleLabel.text = product.title
         let loved = product.loved == 1 ? "heart.fill" : "heart"
@@ -33,16 +38,6 @@ class DetailProductViewController: UIViewController {
         priceLabel.text = product.price
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func favoriteAction(_ sender: Any) {
         guard let product = product else { return }
         if product.loved == 1 {
@@ -56,7 +51,6 @@ class DetailProductViewController: UIViewController {
     
     @IBAction func shareAction(_ sender: Any) {
         let items = [URL(string: "https://www.sehatq.com")!]
-
 
         let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
         present(ac, animated: true)
@@ -72,7 +66,5 @@ class DetailProductViewController: UIViewController {
         }))
 
         self.present(alert, animated: true)
-
-//        self.navigationController?.popToRootViewController(animated: true)
     }
 }

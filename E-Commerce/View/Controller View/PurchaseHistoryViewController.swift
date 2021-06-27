@@ -31,18 +31,24 @@ class PurchaseHistoryViewController: UIViewController {
     
     func fetchData() {
         viewModel.fetchData { isSuccess in
-            self.tableView.reloadData()
+            if isSuccess {
+                self.tableView.reloadData()
+            }
         }
     }
     
     @IBAction func deleteAllAction(_ sender: Any) {
-        viewModel.deleteAll { isSuccess in
-            let alert = UIAlertController(title: "Remove", message: "You have remove all products", preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
-
-            self.present(alert, animated: true)
-            self.tableView.reloadData()
+        if !viewModel.products.isEmpty {
+            viewModel.deleteAll { isSuccess in
+                if isSuccess {
+                    let alert = UIAlertController(title: "Remove", message: "You have remove all products", preferredStyle: .alert)
+                    
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                    
+                    self.present(alert, animated: true)
+                    self.tableView.reloadData()
+                }
+            }
         }
     }
     

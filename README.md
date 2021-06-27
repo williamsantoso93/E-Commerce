@@ -3,7 +3,6 @@
 tester have install cocoapods and do pod install before running the program
 
 use third party library (cocoapod) :
-
 * pod 'Firebase/Analytics'
 * pod 'FirebaseUI'
 * pod 'FirebaseUI/Auth'
@@ -13,3 +12,5 @@ use third party library (cocoapod) :
 * pod 'FBSDKLoginKit'
 
 use core data for local storage
+
+tested using iPhone 11 simulator and iPhone Xr real device
