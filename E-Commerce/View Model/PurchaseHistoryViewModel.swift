@@ -18,6 +18,26 @@ class PurchaseHistoryViewModel {
         completion(true)
     }
     
+    func deleteAll(completion: @escaping (Bool) -> Void) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ProductsHistory")
+        fetchRequest.returnsObjectsAsFaults = false
+        do {
+            
+            let results = try context.fetch(fetchRequest)
+            for managedObject in results {
+                if let managedObjectData: NSManagedObject = managedObject as? NSManagedObject {
+                    context.delete(managedObjectData)
+                }
+            }
+            try context.save()
+            products.removeAll()
+            completion(true)
+        }
+        catch {
+            print(error.localizedDescription)
+        }
+    }
+    
     func loadData() {
         let request: NSFetchRequest = ProductsHistory.fetchRequest()
         

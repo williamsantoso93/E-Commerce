@@ -1,5 +1,7 @@
 # E-Commerce
 
+tester have install cocoapods and do pod install before running the program
+
 use third party library (cocoapod) :
 
 * pod 'Firebase/Analytics'
@@ -9,3 +11,5 @@ use third party library (cocoapod) :
 * pod 'FirebaseUI/Facebook'
 * pod 'SDWebImage'
 * pod 'FBSDKLoginKit'
+
+use core data for local storage

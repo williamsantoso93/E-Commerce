@@ -22,8 +22,6 @@ class PurchaseHistoryViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         tableView.register(UINib.init(nibName: "ListCardTableViewCell", bundle: nil), forCellReuseIdentifier: "ListCardTableViewCell")
-        
-//        fetchData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +36,14 @@ class PurchaseHistoryViewController: UIViewController {
     }
     
     @IBAction func deleteAllAction(_ sender: Any) {
+        viewModel.deleteAll { isSuccess in
+            let alert = UIAlertController(title: "Remove", message: "You have remove all products", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+
+            self.present(alert, animated: true)
+            self.tableView.reloadData()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
