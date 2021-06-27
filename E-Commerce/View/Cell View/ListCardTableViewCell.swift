@@ -32,6 +32,13 @@ class ListCardTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setupCell(product: Product, at index: Int) {
+        listImage.sd_setImage(with: URL(string: product.imageURL))
+        titleLabel.text = product.title
+        priceLabel.text = product.price
+        self.index = index
+    }
+    
     @objc func tapped() {
         delegate?.productTapped(at: index)
     }

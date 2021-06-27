@@ -21,7 +21,7 @@ class HomeViewController: UIViewController {
         tableView.register(UINib.init(nibName: "ProductListTableViewCell", bundle: nil), forCellReuseIdentifier: "ProductListTableViewCell")
         // Do any additional setup after loading the view.
         
-//        fetchData()
+        fetchData()
     }
 
     func fetchData() {
@@ -49,9 +49,9 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as! CategoryCollectionViewCell
-        
-        cell.categoryImageView.sd_setImage(with: URL(string: viewModel.commerce?.category[indexPath.row].imageURL ?? ""))
-        cell.titleLabel.text = viewModel.commerce?.category[indexPath.row].name ?? ""
+        if let category = viewModel.commerce?.category[indexPath.row] {
+            cell.setupCell(category: category)
+        }
         return cell
         
     }
@@ -68,11 +68,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate, Produc
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductListTableViewCell", for: indexPath) as! ProductListTableViewCell
         
-        cell.productImageView.sd_setImage(with: URL(string: viewModel.commerce?.product[indexPath.row].imageURL ?? ""))
-        cell.titleLabel.text = viewModel.commerce?.product[indexPath.row].title ?? ""
-        let loved = viewModel.commerce?.product[indexPath.row].loved == 1 ? "heart.fill" : "heart"
-        cell.favoriteButton.setImage(UIImage(systemName: loved), for: .normal)
-        cell.index = indexPath.row
+        if let product = viewModel.commerce?.product[indexPath.row] {
+            cell.setupCell(product: product, at: indexPath.row)
+        }
         cell.delegate = self
         
         return cell

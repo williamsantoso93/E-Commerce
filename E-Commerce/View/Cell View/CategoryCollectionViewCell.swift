@@ -15,5 +15,9 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
+    func setupCell(category: Category) {
+        categoryImageView.sd_setImage(with: URL(string: category.imageURL))
+        titleLabel.text = category.name
+    }
 }

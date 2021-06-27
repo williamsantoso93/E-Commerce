@@ -206,10 +206,10 @@
 		7ACF9BDF26876A860039C4DD /* Cell View */ = {
 			isa = PBXGroup;
 			children = (
-				7ACF9BDA26875E740039C4DD /* ProductListTableViewCell.swift */,
-				7ACF9BDB26875E740039C4DD /* ProductListTableViewCell.xib */,
 				7ACF9BD4268758700039C4DD /* CategoryCollectionViewCell.swift */,
 				7ACF9BD5268758700039C4DD /* CategoryCollectionViewCell.xib */,
+				7ACF9BDA26875E740039C4DD /* ProductListTableViewCell.swift */,
+				7ACF9BDB26875E740039C4DD /* ProductListTableViewCell.xib */,
 				7ACF9BE52687740B0039C4DD /* ListCardTableViewCell.swift */,
 				7ACF9BE62687740B0039C4DD /* ListCardTableViewCell.xib */,
 			);

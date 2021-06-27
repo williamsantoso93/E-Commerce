@@ -1,5 +1,5 @@
 //
-//  ProductListTableViewCell.swift
+//  ProductListTableViewswift
 //  E-Commerce
 //
 //  Created by William Santoso on 26/06/21.
@@ -30,6 +30,15 @@ class ProductListTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setupCell(product: Product, at index: Int) {
+        productImageView.sd_setImage(with: URL(string: product.imageURL))
+        titleLabel.text = product.title
+        let loved = product.loved == 1 ? "heart.fill" : "heart"
+        
+        favoriteButton.setImage(UIImage(systemName: loved), for: .normal)
+        self.index = index
     }
     
     @IBAction func favoriteAction(_ sender: UIButton) {

@@ -68,11 +68,9 @@ extension PurchaseHistoryViewController: UITableViewDataSource, UITableViewDeleg
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListCardTableViewCell", for: indexPath) as! ListCardTableViewCell
         
         if let product = commerce?.data.product[indexPath.row] {
-            cell.listImage.sd_setImage(with: URL(string: product.imageURL))
-            cell.titleLabel.text = product.title
-            cell.priceLabel.text = product.price
-            cell.delegate = self
+            cell.setupCell(product: product, at: indexPath.row)
         }
+        cell.delegate = self
         
         return cell
     }
