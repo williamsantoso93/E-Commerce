@@ -36,6 +36,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInDeleg
         GIDSignIn.sharedInstance().delegate = self
         
         borderCheckmarkView.layer.borderWidth = 1
+        borderCheckmarkView.layer.cornerRadius = 10
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapped))
         rememberMeView.addGestureRecognizer(tap)
