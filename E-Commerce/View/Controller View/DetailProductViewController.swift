@@ -16,11 +16,13 @@ class DetailProductViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     
     var product: Product?
+    var viewModel = DetailProductViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        viewModel.product = product
         guard let product = product else { return }
         productImage.sd_setImage(with: URL(string: product.imageURL))
         titleLabel.text = product.title
@@ -61,6 +63,16 @@ class DetailProductViewController: UIViewController {
     }
     
     @IBAction func buyAction(_ sender: Any) {
+        viewModel.buyProduct()
+        guard let product = product else { return }
+        let alert = UIAlertController(title: "Added Product", message: "You have added \(product.title)", preferredStyle: .alert)
         
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: {_ in
+            self.navigationController?.popToRootViewController(animated: true)
+        }))
+
+        self.present(alert, animated: true)
+
+//        self.navigationController?.popToRootViewController(animated: true)
     }
 }

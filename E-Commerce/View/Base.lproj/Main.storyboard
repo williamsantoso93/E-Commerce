@@ -201,7 +201,13 @@
                             <constraint firstItem="N45-vB-JIn" firstAttribute="top" secondItem="d1h-zY-tBe" secondAttribute="top" id="qyH-LD-aSo"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Purchase History" largeTitleDisplayMode="always" id="W8u-rS-GJw"/>
+                    <navigationItem key="navigationItem" title="Purchase History" largeTitleDisplayMode="always" id="W8u-rS-GJw">
+                        <barButtonItem key="rightBarButtonItem" title="Delete All" id="yjo-CZ-oCq">
+                            <connections>
+                                <action selector="deleteAllAction:" destination="nGh-gX-1bS" id="BS3-ef-n6x"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="N45-vB-JIn" id="TGY-i6-pbQ"/>
                         <segue destination="MA9-Sd-uIj" kind="show" identifier="HistoryToDetailSegue" id="2wl-VH-oKm"/>

@@ -23,37 +23,22 @@ class PurchaseHistoryViewController: UIViewController {
         
         tableView.register(UINib.init(nibName: "ListCardTableViewCell", bundle: nil), forCellReuseIdentifier: "ListCardTableViewCell")
         
+//        fetchData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         fetchData()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     func fetchData() {
-//        Networking.shared.getData(from: "https://private-4639ce-ecommerce56.apiary-mock.com/home") { (result: Result<Commerce,NetworkError>) in
-//            DispatchQueue.main.async {
-//                switch result {
-//                case .success(let data) :
-//                    self.commerce = data
-//                    self.tableView.reloadData()
-//                case .failure(let error) :
-//                    print(error.localizedDescription)
-//                }
-//            }
-//        }
         viewModel.fetchData { isSuccess in
             self.tableView.reloadData()
         }
     }
     
+    @IBAction func deleteAllAction(_ sender: Any) {
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "HistoryToDetailSegue" {
@@ -66,23 +51,20 @@ class PurchaseHistoryViewController: UIViewController {
 
 extension PurchaseHistoryViewController: UITableViewDataSource, UITableViewDelegate, ListCardTableViewCellDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return commerce?.data.product.count ?? 0
+        return viewModel.products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListCardTableViewCell", for: indexPath) as! ListCardTableViewCell
         
-        if let product = commerce?.data.product[indexPath.row] {
-            cell.setupCell(product: product, at: indexPath.row)
-        }
+        cell.setupCell(product: viewModel.products[indexPath.row], at: indexPath.row)
         cell.delegate = self
         
         return cell
     }
     
     func productTapped(at index: Int) {
-        guard let product = commerce?.data.product[index] else { return }
-        selectedProduct = product
+        selectedProduct = viewModel.products[index]
         
         performSegue(withIdentifier: "HistoryToDetailSegue", sender: nil)
     }
