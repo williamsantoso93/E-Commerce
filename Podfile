@@ -31,5 +31,7 @@ target 'E-Commerce' do
   pod 'FirebaseUI/Facebook'
 
   pod 'SDWebImage'
+  
+  pod 'FBSDKLoginKit'
 
 end

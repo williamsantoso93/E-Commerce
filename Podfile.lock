@@ -431,6 +431,7 @@ PODS:
   - SDWebImage/Core (5.11.1)
 
 DEPENDENCIES:
+  - FBSDKLoginKit
   - Firebase/Analytics
   - FirebaseUI
   - FirebaseUI/Auth
@@ -497,6 +498,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
 
-PODFILE CHECKSUM: ce94d75eb5b87e1c7517433ae14155bcdc48798e
+PODFILE CHECKSUM: 2d841bb4f0d242333f1b9d59658deb59035a15d8
 
 COCOAPODS: 1.10.1
