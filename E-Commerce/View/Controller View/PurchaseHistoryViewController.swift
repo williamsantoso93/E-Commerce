@@ -14,6 +14,8 @@ class PurchaseHistoryViewController: UIViewController {
     var commerce: Commerce?
     var selectedProduct: Product?
     
+    var viewModel = PurchaseHistoryViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,16 +38,19 @@ class PurchaseHistoryViewController: UIViewController {
     */
     
     func fetchData() {
-        Networking.shared.getData(from: "https://private-4639ce-ecommerce56.apiary-mock.com/home") { (result: Result<Commerce,NetworkError>) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let data) :
-                    self.commerce = data
-                    self.tableView.reloadData()
-                case .failure(let error) :
-                    print(error.localizedDescription)
-                }
-            }
+//        Networking.shared.getData(from: "https://private-4639ce-ecommerce56.apiary-mock.com/home") { (result: Result<Commerce,NetworkError>) in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let data) :
+//                    self.commerce = data
+//                    self.tableView.reloadData()
+//                case .failure(let error) :
+//                    print(error.localizedDescription)
+//                }
+//            }
+//        }
+        viewModel.fetchData { isSuccess in
+            self.tableView.reloadData()
         }
     }
     
