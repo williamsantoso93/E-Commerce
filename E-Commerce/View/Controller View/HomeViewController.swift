@@ -33,10 +33,19 @@ class HomeViewController: UIViewController {
         }
     }
     
+    @IBAction func searchAction(_ sender: Any) {
+        if !(viewModel.commerce?.product.isEmpty ?? true) {
+            performSegue(withIdentifier: "HomeToSearchSegue", sender: nil)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "HomeToDetailSegue" {
             let controller = segue.destination as! DetailProductViewController
             controller.product = viewModel.selectedProduct
+        } else if segue.identifier == "HomeToSearchSegue" {
+            let controller = segue.destination as! SearchViewController
+            controller.products = viewModel.commerce?.product
         }
     }
 }
@@ -55,8 +64,6 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         return cell
         
     }
-    
-    
 }
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate, ProductListTableViewCellDelegate {

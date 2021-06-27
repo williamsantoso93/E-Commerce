@@ -41,11 +41,11 @@ class DetailProductViewController: UIViewController {
     @IBAction func favoriteAction(_ sender: Any) {
         guard let product = product else { return }
         if product.loved == 1 {
-            self.product?.loved = 0
+            viewModel.product?.loved = 0
         } else {
-            self.product?.loved = 1
+            viewModel.product?.loved = 1
         }
-        let loved = self.product?.loved == 1 ? "heart.fill" : "heart"
+        let loved = viewModel.product?.loved == 1 ? "heart.fill" : "heart"
         favoriteButton.setImage(UIImage(systemName: loved), for: .normal)
     }
     
