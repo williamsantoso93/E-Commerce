@@ -11,28 +11,51 @@ import GoogleSignIn
 import FBSDKLoginKit
 
 
-class LoginViewController: UIViewController, LoginButtonDelegate {
+class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInDelegate {
+    
     
     @IBOutlet weak var gSignInButton: GIDSignInButton!
     @IBOutlet weak var loginWithFacebookView: UIView!
+    @IBOutlet weak var rememberMeView: UIStackView!
+    @IBOutlet weak var checkmarkImage: UIImageView!
+    @IBOutlet weak var borderCheckmarkView: UIView!
+    
+    var check = false {
+        didSet {
+            if check {
+                checkmarkImage.image = UIImage(systemName: "checkmark")
+            } else {
+                checkmarkImage.image = UIImage()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance().signIn()
+        GIDSignIn.sharedInstance().delegate = self
         
+        borderCheckmarkView.layer.borderWidth = 1
         
-        if let token = AccessToken.current,
-            !token.isExpired {
-            // User is logged in, do work such as go to next view controller.
-        } else {
-            let loginButton = FBLoginButton()
-            loginButton.center = loginWithFacebookView.center
-            loginButton.delegate = self
-            loginButton.permissions = ["email"]
-            loginWithFacebookView.addSubview(loginButton)
-        }
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapped))
+        rememberMeView.addGestureRecognizer(tap)
+        
+        setupFBLoginButtonView()
+    }
+    
+    func setupFBLoginButtonView() {
+        let loginButton = FBLoginButton()
+        loginButton.center = loginWithFacebookView.center
+        loginButton.delegate = self
+        loginButton.permissions = ["email"]
+        loginWithFacebookView.addSubview(loginButton)
+    }
+    
+    
+    @objc func tapped() {
+        check.toggle()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,31 +64,30 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
      }
 
     @IBAction func gSignInAction(_ sender: Any) {
-        print("google")
-        
-    }
-    func signIn() {
         
     }
     
+    func signIn() {
+        performSegue(withIdentifier: "HomeSegue", sender: nil)
+    }
+    
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
-        
+        if error == nil {
+            signIn()
+        }
     }
     
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
         
     }
-    @IBAction func signInAction(_ sender: Any) {
-        performSegue(withIdentifier: "HomeSegue", sender: nil)
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if error == nil {
+            self.signIn()
+        }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "HomeSegue" {
-//            let tabBarVC = TabBarViewController()
-//            tabBarVC.viewControllers = [HomeViewController()]
-//
-//            self.present(tabBarVC, animated: true, completion: nil)
-//        }
+    @IBAction func signInAction(_ sender: Any) {
+        signIn()
     }
 }
 
