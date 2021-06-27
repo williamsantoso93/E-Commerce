@@ -18,7 +18,7 @@ class Networking {
     
     static let shared = Networking()
     
-    func getData(from urlString: String, completion: @escaping (Result<Commerce,NetworkError>) -> Void) {
+    func getData(from urlString: String, completion: @escaping (Result<Commerce, NetworkError>) -> Void) {
         guard let url = URL(string: urlString) else {
             return completion(.failure(.badUrl))
         }

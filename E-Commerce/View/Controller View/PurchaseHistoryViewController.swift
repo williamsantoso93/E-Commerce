@@ -27,7 +27,7 @@ class PurchaseHistoryViewController: UIViewController {
     }
     
     func fetchData() {
-        viewModel.fetchData { isSuccess in
+        viewModel.loadData { isSuccess in
             if isSuccess {
                 self.tableView.reloadData()
             }

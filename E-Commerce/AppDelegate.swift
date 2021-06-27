@@ -14,29 +14,10 @@ import FBSDKCoreKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-      // ...
-        print("user email: \(user?.profile.email ?? "no email")")
-//      if let error = error {
-//        // ...
-//        return
-//      }
-//
-//      guard let authentication = user.authentication else { return }
-//      let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-//                                                        accessToken: authentication.accessToken)
-//      // ...
-    }
-
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        // Perform any operations when the user disconnects from app here.
-        // ...
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
     }
     
-    
-
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()

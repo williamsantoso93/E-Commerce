@@ -14,7 +14,7 @@ class PurchaseHistoryViewModel {
     var products: [Product] = []
     var selectedProduct: Product?
     
-    func fetchData(completion: @escaping (Bool) -> Void) {
+    func loadData(completion: @escaping (Bool) -> Void) {
         let request: NSFetchRequest = ProductsHistory.fetchRequest()
         
         do {
@@ -54,8 +54,5 @@ class PurchaseHistoryViewModel {
             print(error.localizedDescription)
             completion(false)
         }
-    }
-    
-    func loadData() {
     }
 }
