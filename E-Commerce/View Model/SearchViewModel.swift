@@ -10,4 +10,13 @@ import Foundation
 class SearchViewModel {
     var products: [Product]?
     var selectedProduct: Product?
+    
+    var searchText: String = ""
+    
+    var filterProducts: [Product] {
+        return products?.filter {
+            searchText.isEmpty ? false : $0.title.localizedStandardContains(searchText)
+        } ?? []
+    }
+    
 }

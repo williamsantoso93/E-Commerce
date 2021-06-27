@@ -321,7 +321,7 @@
             </objects>
             <point key="canvasLocation" x="4731.884057971015" y="-984.375"/>
         </scene>
-        <!--Search View Controller-->
+        <!--Search-->
         <scene sceneID="CoG-rI-DFQ">
             <objects>
                 <viewController id="6n3-6x-Rqk" customClass="SearchViewController" customModule="E_Commerce" customModuleProvider="target" sceneMemberID="viewController">
@@ -347,7 +347,7 @@
                             <constraint firstItem="ES6-7e-nUX" firstAttribute="leading" secondItem="JPI-RG-NuA" secondAttribute="leading" id="YPf-T5-z6B"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="geh-Q9-yny"/>
+                    <navigationItem key="navigationItem" title="Search" id="geh-Q9-yny"/>
                     <connections>
                         <outlet property="tableView" destination="ES6-7e-nUX" id="tXR-Zg-QS3"/>
                         <segue destination="MA9-Sd-uIj" kind="show" identifier="SearchToDetailSegue" id="rzC-ss-NI4"/>
