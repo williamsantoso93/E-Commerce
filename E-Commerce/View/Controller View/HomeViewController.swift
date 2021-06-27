@@ -9,13 +9,10 @@ import UIKit
 import SDWebImage
 
 class HomeViewController: UIViewController {
-    let categories = ["Celana", "Baju", "Topi", "Tas"]
-    var commerce: Commerce?
-
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     
-    var selectedProduct: Product?
+    var viewModel = HomeViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,20 +21,14 @@ class HomeViewController: UIViewController {
         tableView.register(UINib.init(nibName: "ProductListTableViewCell", bundle: nil), forCellReuseIdentifier: "ProductListTableViewCell")
         // Do any additional setup after loading the view.
         
-        fetchData()
+//        fetchData()
     }
 
     func fetchData() {
-        Networking.shared.getData(from: "https://private-4639ce-ecommerce56.apiary-mock.com/home") { (result: Result<Commerce,NetworkError>) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let data) :
-                    self.commerce = data
-                    self.collectionView.reloadData()
-                    self.tableView.reloadData()
-                case .failure(let error) :
-                    print(error.localizedDescription)
-                }
+        viewModel.fetchData { isSuccess in
+            if isSuccess {
+                self.collectionView.reloadData()
+                self.tableView.reloadData()
             }
         }
     }
@@ -45,22 +36,22 @@ class HomeViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "HomeToDetailSegue" {
             let controller = segue.destination as! DetailProductViewController
-            controller.product = selectedProduct
+            controller.product = viewModel.selectedProduct
         }
     }
 }
 
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return commerce?.data.category.count ?? 0
+        return viewModel.commerce?.category.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as! CategoryCollectionViewCell
         
-        cell.categoryImageView.sd_setImage(with: URL(string: commerce?.data.category[indexPath.row].imageURL ?? ""))
-        cell.titleLabel.text = commerce?.data.category[indexPath.row].name ?? ""
+        cell.categoryImageView.sd_setImage(with: URL(string: viewModel.commerce?.category[indexPath.row].imageURL ?? ""))
+        cell.titleLabel.text = viewModel.commerce?.category[indexPath.row].name ?? ""
         return cell
         
     }
@@ -70,16 +61,16 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate, ProductListTableViewCellDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return commerce?.data.product.count ?? 0
+        return viewModel.commerce?.product.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductListTableViewCell", for: indexPath) as! ProductListTableViewCell
         
-        cell.productImageView.sd_setImage(with: URL(string: commerce?.data.product[indexPath.row].imageURL ?? ""))
-        cell.titleLabel.text = commerce?.data.product[indexPath.row].title ?? ""
-        let loved = commerce?.data.product[indexPath.row].loved == 1 ? "heart.fill" : "heart"
+        cell.productImageView.sd_setImage(with: URL(string: viewModel.commerce?.product[indexPath.row].imageURL ?? ""))
+        cell.titleLabel.text = viewModel.commerce?.product[indexPath.row].title ?? ""
+        let loved = viewModel.commerce?.product[indexPath.row].loved == 1 ? "heart.fill" : "heart"
         cell.favoriteButton.setImage(UIImage(systemName: loved), for: .normal)
         cell.index = indexPath.row
         cell.delegate = self
@@ -88,18 +79,19 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate, Produc
     }
     
     func favoriteAction(at index: Int) {
-        if let loved = commerce?.data.product[index].loved {
+        if let loved = viewModel.commerce?.product[index].loved {
             if loved == 1 {
-                commerce?.data.product[index].loved = 0
+                viewModel.commerce?.product[index].loved = 0
             } else {
-                commerce?.data.product[index].loved = 1
+                viewModel.commerce?.product[index].loved = 1
             }
             tableView.reloadData()
         }
     }
+    
     func productTapped(at index: Int) {
-        guard let product = commerce?.data.product[index] else { return }
-        selectedProduct = product
+        guard let product = viewModel.commerce?.product[index] else { return }
+        viewModel.selectedProduct = product
         
         performSegue(withIdentifier: "HomeToDetailSegue", sender: nil)
     }

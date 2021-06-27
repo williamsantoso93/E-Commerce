@@ -24,7 +24,6 @@ class ProductListTableViewCell: UITableViewCell {
         // Initialization code
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapped))
         contentView.addGestureRecognizer(tap)
-
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

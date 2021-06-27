@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ProductHistory" representedClassName="ProductHistory" syncable="YES" codeGenerationType="class">
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="product" optional="YES" attributeType="String"/>
+        <attribute name="attribute1" optional="YES"/>
+        <attribute name="id" optional="YES"/>
     </entity>
     <elements>
-        <element name="ProductHistory" positionX="-54" positionY="-9" width="128" height="73"/>
+        <element name="ProductHistory" positionX="-63" positionY="-18" width="128" height="59"/>
     </elements>
 </model>
